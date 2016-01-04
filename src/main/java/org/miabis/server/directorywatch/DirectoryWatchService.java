@@ -11,10 +11,12 @@ import java.nio.file.WatchService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Async;
+import org.springframework.stereotype.Service;
 
-public class DirectoryWatch {
+@Service
+public class DirectoryWatchService {
 	
-	private static final Logger logger = LoggerFactory.getLogger(DirectoryWatch.class);
+	private static final Logger logger = LoggerFactory.getLogger(DirectoryWatchService.class);
 	private WatchService watcher;
 	private Path path;
 	
@@ -22,7 +24,7 @@ public class DirectoryWatch {
 	 * Creates a WatchService
 	 * @throws IOException
 	 */
-	public DirectoryWatch() throws IOException {
+	public DirectoryWatchService() throws IOException {
 		this.watcher = FileSystems.getDefault().newWatchService();
 	}
 	
@@ -30,7 +32,7 @@ public class DirectoryWatch {
 	 * Creates a WatchService and registers the given directory
 	 * @throws IOException
 	 */
-	public DirectoryWatch(Path path) throws IOException {
+	public DirectoryWatchService(Path path) throws IOException {
 		this.watcher = FileSystems.getDefault().newWatchService();
 		setPath(path);
 	}
